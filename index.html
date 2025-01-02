@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerador de Assinatura de E-mail</title>
+  <script src="js/html2canvas.min.js"></script>
+  <link rel="icon" type="image/png" href="imagens/icon.png">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="d-flex justify-content-center align-items-center vh-100">
+  <div class="card rounded-lg p-3 shadow-lg">
+    <form>
+      <div class="mb-3">
+        <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" required>
+      </div>
+      <div class="mb-3">
+        <input type="text" class="form-control" id="setor" name="setor" placeholder="Setor" required>
+      </div>
+      <div class="mb-3">
+        <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Telefone" required>
+      </div>
+      <div class="mb-3">
+        <input type="text" class="form-control" id="celular" name="celular" placeholder="Celular" required>
+      </div>
+      <div class="mb-3">
+        <input type="email" class="form-control" id="email" name="email" placeholder="E-mail" required>
+      </div>
+      <button type="button" class="btn btn-primary mb-3" onclick="exportaPNG()">Exportar como PNG</button>
+      <button type="button" class="btn btn-primary mb-3" onclick="zerar_campos()">Limpar</button>
+    </form>
+    <div class="border border-2 border-light-subtle rounded-4">
+      <div id="assinatura-gerada">
+        <img class="ass-logo" src="imagens/logo_br.png" alt="Logo Br Marinas" />
+        <div class="ass-texto">
+          <div id="ass-nome"></div>
+          <div id="ass-setor"></div>
+          <div>BR Marinas</div>
+          <div id="ass-telefone"></div>
+          <div id="ass-celular"></div>
+          <div id="ass-email"></div>
+        </div>
+      </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
