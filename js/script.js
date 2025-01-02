@@ -14,7 +14,11 @@ function geraAssinatura() {
 
 function exportaPNG() {
   const signatureElement = document.getElementById('assinatura-gerada');
-  html2canvas(signatureElement, { dpi: 144, useCORS: true }).then(canvas => {
+  const scale = 310 / signatureElement.offsetWidth;
+  html2canvas(signatureElement, {
+    scale: scale, // Aplica a escala calculada
+    useCORS: true
+  }).then(canvas => {
     const link = document.createElement('a');
     link.download = 'assinatura.png';
     link.href = canvas.toDataURL('image/png');
