@@ -1,5 +1,18 @@
 body {
   font-family: Arial, sans-serif;
+  background-image: url('../imagens/waves.svg');
+  background-size: 100%;
+  background-position: bottom;
+  background-repeat: no-repeat;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  color: #555;
+  text-align: center;
+  padding: 5px;
+  font-size: 12px;
 }
 
 #assinatura-gerada {

@@ -14,7 +14,7 @@ function geraAssinatura() {
 
 function exportaPNG() {
   const signatureElement = document.getElementById('assinatura-gerada');
-  const scale = 350 / signatureElement.offsetWidth;
+  const scale = 400 / signatureElement.offsetWidth;
   html2canvas(signatureElement, {
     scale: scale,
     useCORS: true
