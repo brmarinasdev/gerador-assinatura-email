@@ -14,14 +14,23 @@ function geraAssinatura() {
 
 function exportaPNG() {
   const signatureElement = document.getElementById('assinatura-gerada');
-  const scale = 400 / signatureElement.offsetWidth;
+  const scale = 3;
   html2canvas(signatureElement, {
     scale: scale,
     useCORS: true
   }).then(canvas => {
+    const finalCanvas = document.createElement('canvas');
+    const ctx = finalCanvas.getContext('2d');
+    const width = 400;
+    const ratio = width / canvas.width;
+    finalCanvas.width = width;
+    finalCanvas.height = canvas.height * ratio;
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(0, 0, finalCanvas.width, finalCanvas.height);
+    ctx.drawImage(canvas, 0, 0, finalCanvas.width, finalCanvas.height);
     const link = document.createElement('a');
-    link.download = 'assinatura.png';
-    link.href = canvas.toDataURL('image/png');
+    link.download = 'assinatura';
+    link.href = finalCanvas.toDataURL('image/png');
     link.click();
   });
 }
@@ -40,7 +49,6 @@ const assTelefone = document.getElementById('ass-telefone')
 const assCelular = document.getElementById('ass-celular')
 const assEmail = document.getElementById('ass-email');
 
-
 //Atualiza os elementos no crachá em tempo real
 inputNome.addEventListener('input', () => { assNome.textContent = inputNome.value });
 inputSetor.addEventListener('input', () => { assSetor.textContent = inputSetor.value });
@@ -50,7 +58,6 @@ inputCelular.addEventListener('input', () => {
 });
 inputEmail.addEventListener('input', () => { assEmail.textContent = inputEmail.value });
 
-
 //Limpa os campos do formulário
 function zerar_campos() {
 
@@ -59,7 +66,6 @@ function zerar_campos() {
   document.getElementById('ass-telefone').innerText = "";
   document.getElementById('ass-celular').innerHTML = "";
   document.getElementById('ass-email').innerText = "";
-
   document.getElementById('nome').value = "";
   document.getElementById('setor').value = "";
   document.getElementById('telefone').value = "";
