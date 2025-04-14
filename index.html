@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gerador de Assinatura de E-mail</title>
   <script src="js/html2canvas.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dom-to-svg@1.1.0/dist/dom-to-svg.min.js"></script>
   <link rel="icon" type="image/png" href="imagens/icon.png">
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body class="d-flex flex-column justify-content-center align-items-center vh-100">
   <div class="card rounded-lg p-3 shadow-lg">
     <form>
@@ -29,19 +28,19 @@
       <div class="mb-3">
         <input type="email" class="form-control" id="email" name="email" placeholder="E-mail" required>
       </div>
-      <button type="button" class="btn btn-primary mb-3" onclick="exportaPNG()">Exportar como PNG</button>
-      <button type="button" class="btn btn-primary mb-3" onclick="zerar_campos()">Limpar</button>
+      <button type="button" class="btn btn-primary mb-3" onclick="exportarPNG()">Exportar como PNG</button>
+      <button type="button" class="btn btn-primary mb-3" onclick="zerarCampos()">Limpar</button>
     </form>
     <div class="border border-2 border-light-subtle rounded-4">
       <div id="assinatura-gerada">
         <img class="ass-logo" src="imagens/logo_br.png" alt="Logo Br Marinas" />
         <div class="ass-texto">
-          <div id="ass-nome"></div>
-          <div id="ass-setor"></div>
-          <div>BR Marinas</div>
-          <div id="ass-telefone"></div>
-          <div id="ass-celular"></div>
-          <div id="ass-email"></div>
+          <div id="ass-nome" contenteditable="false"></div>
+          <div id="ass-setor" contenteditable="false"></div>
+          <div contenteditable="false">BR Marinas</div>
+          <div id="ass-telefone" contenteditable="false"></div>
+          <div id="ass-celular" contenteditable="false"></div>
+          <div id="ass-email" contenteditable="false"></div>
         </div>
       </div>
     </div>

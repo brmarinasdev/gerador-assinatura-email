@@ -1,40 +1,3 @@
-function geraAssinatura() {
-  const nome = document.getElementById('nome').value;
-  const setor = document.getElementById('setor').value;
-  const telefone = document.getElementById('telefone').value;
-  const celular = document.getElementById('celular').value;
-  const email = document.getElementById('email').value;
-
-  document.getElementById('ass-nome').innerText = nome;
-  document.getElementById('ass-setor').innerText = setor;
-  document.getElementById('ass-telefone').innerText = telefone;
-  document.getElementById('ass-celular').innerHTML = celular ? `${celular} <img src="imagens/logo_whatsapp.png" alt="Celular" style="width: 15px; height: 15px; margin-left: 5px;">` : "";
-  document.getElementById('ass-email').innerText = email;
-}
-
-function exportaPNG() {
-  const signatureElement = document.getElementById('assinatura-gerada');
-  const scale = 3;
-  html2canvas(signatureElement, {
-    scale: scale,
-    useCORS: true
-  }).then(canvas => {
-    const finalCanvas = document.createElement('canvas');
-    const ctx = finalCanvas.getContext('2d');
-    const width = 400;
-    const ratio = width / canvas.width;
-    finalCanvas.width = width;
-    finalCanvas.height = canvas.height * ratio;
-    ctx.fillStyle = "#ffffff";
-    ctx.fillRect(0, 0, finalCanvas.width, finalCanvas.height);
-    ctx.drawImage(canvas, 0, 0, finalCanvas.width, finalCanvas.height);
-    const link = document.createElement('a');
-    link.download = 'assinatura';
-    link.href = finalCanvas.toDataURL('image/png');
-    link.click();
-  });
-}
-
 //Seleciona os elementos do formulário
 const inputNome = document.getElementById('nome');
 const inputSetor = document.getElementById('setor');
@@ -53,14 +16,27 @@ const assEmail = document.getElementById('ass-email');
 inputNome.addEventListener('input', () => { assNome.textContent = inputNome.value });
 inputSetor.addEventListener('input', () => { assSetor.textContent = inputSetor.value });
 inputTelefone.addEventListener('input', () => { assTelefone.textContent = inputTelefone.value });
-inputCelular.addEventListener('input', () => {
-  assCelular.innerHTML = inputCelular.value ? `${inputCelular.value}<img src="imagens/logo_whatsapp.png" alt="Celular" style="width: 15px; height: 15px; margin-left: 5px;">` : "";
+inputCelular.addEventListener('input', () => {assCelular.innerHTML = inputCelular.value ? `${inputCelular.value}<img src="imagens/logo_whatsapp.png" alt="Celular" style="width: 10px; height: 10px; margin-left: 5px;">` : "";
 });
 inputEmail.addEventListener('input', () => { assEmail.textContent = inputEmail.value });
 
-//Limpa os campos do formulário
-function zerar_campos() {
+//Exporta a assinatura
+function exportarPNG() {
+  const elemento = document.getElementById("assinatura-gerada");
+  const nome = document.getElementById("nome").value.trim() || "assinatura";
+  html2canvas(elemento, {
+    scale: 3, 
+    useCORS: true 
+  }).then(canvas => {
+    const link = document.createElement('a');
+    link.download = `${nome.toLowerCase().replace(/\s+/g, "_")}.png`;
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+  });
+}
 
+//Limpa os campos do formulário
+function zerarCampos() {
   document.getElementById('ass-nome').innerText = "";
   document.getElementById('ass-setor').innerText = "";
   document.getElementById('ass-telefone').innerText = "";
