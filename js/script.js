@@ -35,6 +35,20 @@ function exportarPNG() {
   });
 }
 
+//Muda o layout da assinatura
+const logoImg = document.querySelector('#assinatura-gerada .ass-logo');
+document.querySelectorAll('input[name="layout"]').forEach(radio =>
+  radio.addEventListener('change', function() {
+    const assinatura = document.getElementById('assinatura-gerada');
+    assinatura.classList.remove('layout-default','layout-alt');
+    assinatura.classList.add('layout-' + this.value);
+
+    logoImg.src = this.value === 'alt'
+      ? 'imagens/logo_jl.png'
+      : 'imagens/logo_br.png';
+  })
+);
+
 //Limpa os campos do formulário
 function zerarCampos() {
   document.getElementById('ass-nome').innerText = "";

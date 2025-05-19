@@ -15,13 +15,6 @@ footer {
   font-size: 12px;
 }
 
-#assinatura-gerada {
-  display: flex;
-  width: 220px;
-  height: 90px;
-  align-items: center;
-}
-
 #ass-nome {
   font-size: 10px;
   font-weight: bold;
@@ -37,4 +30,40 @@ footer {
 .ass-texto {
   font-size: 8px;
   color: #808080;
+}
+
+.layout-default#assinatura-gerada {
+  display: flex;
+  align-items: center;
+  width: 220px;
+  height: 90px;
+}
+
+.layout-default .ass-logo {
+  max-width: 80px;
+  max-height: 70px;
+  margin-right: 5px;
+}
+
+.layout-alt#assinatura-gerada {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  width: 220px;
+  padding: 0.5rem;
+  box-sizing: border-box;
+}
+
+.layout-alt#assinatura-gerada .ass-logo {
+  order: 2;
+  align-self: flex-start;
+  margin: 0;
+  max-width: 100%;
+  height: auto;
+}
+
+.layout-alt#assinatura-gerada .ass-texto {
+  order: 1;
+  margin-bottom: 0.5rem;
 }

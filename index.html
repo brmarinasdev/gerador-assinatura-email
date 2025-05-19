@@ -12,6 +12,12 @@
 </head>
 <body class="d-flex flex-column justify-content-center align-items-center vh-100">
   <div class="card rounded-lg p-3 shadow-lg">
+      <div class="btn-group mb-4" role="group" aria-label="Layouts">
+        <input type="radio" class="btn-check" name="layout" id="layout-default" value="default" checked>
+        <label class="btn btn-outline-primary" for="layout-default">BR Marinas</label>
+        <input type="radio" class="btn-check" name="layout" id="layout-alt" value="alt">
+        <label class="btn btn-outline-primary" for="layout-alt">BR Marinas JL</label>
+      </div>
     <form>
       <div class="mb-3">
         <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" required>
@@ -25,14 +31,16 @@
       <div class="mb-3">
         <input type="text" class="form-control" id="celular" name="celular" placeholder="Celular" required>
       </div>
-      <div class="mb-3">
+      <div class="mb-3 d-flex gap-2">
         <input type="email" class="form-control" id="email" name="email" placeholder="E-mail" required>
       </div>
-      <button type="button" class="btn btn-primary mb-3" onclick="exportarPNG()">Exportar como PNG</button>
-      <button type="button" class="btn btn-primary mb-3" onclick="zerarCampos()">Limpar</button>
+      <div class="d-flex gap-2 mb-3">
+        <button type="button" class="btn btn-primary flex-fill" onclick="exportarPNG()">Exportar</button>
+        <button type="button" class="btn btn-outline-secondary flex-fill" onclick="zerarCampos()">Limpar</button>
+      </div>
     </form>
     <div class="border border-2 border-light-subtle rounded-4">
-      <div id="assinatura-gerada">
+      <div id="assinatura-gerada" class="layout-default">
         <img class="ass-logo" src="imagens/logo_br.png" alt="Logo Br Marinas" />
         <div class="ass-texto">
           <div id="ass-nome" contenteditable="false"></div>
@@ -45,10 +53,6 @@
       </div>
     </div>
   </div>
-  <footer>
-    &copy; Desenvolvido por Márcio Gonçalves<sup>™</sup> e Thiago Ribeiro<sup>™</sup>
-  </footer>
   <script src="js/script.js"></script>
 </body>
-
 </html>
