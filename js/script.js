@@ -42,7 +42,6 @@ document.querySelectorAll('input[name="layout"]').forEach(radio =>
     const assinatura = document.getElementById('assinatura-gerada');
     assinatura.classList.remove('layout-default','layout-alt');
     assinatura.classList.add('layout-' + this.value);
-
     logoImg.src = this.value === 'alt'
       ? 'imagens/logo_jl.png'
       : 'imagens/logo_br.png';
